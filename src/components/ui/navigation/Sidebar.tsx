@@ -2,22 +2,20 @@ import styled from "styled-components";
 
 const SidebarRoot = styled.aside<{ open: boolean }>`
   position: fixed;
-  top: 64px; /* Height of Navbar */
   left: 0;
-  height: calc(100vh - 64px);
+  height: 100vh;
   width: 260px;
   background: linear-gradient(
     180deg,
-    ${({ theme }) => theme.colors.background.paper} 0%,
-    ${({ theme }) => theme.colors.background.default} 100%
+    ${({ theme }) => theme.colors.background.paper} 0%
   );
   box-shadow: ${({ theme }) => theme.shadows.lg};
   transition: transform ${({ theme }) => theme.transitions.duration.complex}ms
     ${({ theme }) => theme.transitions.easing.easeInOut};
   transform: translateX(${({ open }) => (open ? "0" : "-100%")});
   z-index: ${({ theme }) => theme.zIndex.drawer};
-  overflow-y: auto;
-  border-right: 1px solid ${({ theme }) => theme.colors.divider};
+  /* overflow-y: auto;
+  border-right: 1px solid ${({ theme }) => theme.colors.divider}; */
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     transform: translateX(0);
@@ -43,7 +41,7 @@ const SidebarContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: ${({ theme }) => theme.spacing[4]};
+  gap: ${({ theme }) => theme.spacing[6]};
   min-height: 100%;
 `;
 

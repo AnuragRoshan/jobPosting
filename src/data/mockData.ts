@@ -59,6 +59,7 @@ export interface Post {
   comments: number;
   shares: number;
   liked: boolean;
+  authorId?: string; // Optional field for author ID
 }
 
 export const profilesData: Profile[] = [
@@ -114,7 +115,7 @@ export const profilesData: Profile[] = [
           "Graduated with honors. Participated in ACM programming competitions.",
       },
     ],
-    connections: ["2", "3", "4", "5"],
+    connections: ["2", "3", "4", "5", "6", "7", "8", "9", "10"],
   },
   {
     id: "2",
@@ -277,6 +278,196 @@ export const profilesData: Profile[] = [
     ],
     connections: ["1", "2", "4"],
   },
+
+  {
+    id: "6",
+    name: "Sarah Johnson",
+    avatar: "https://randomuser.me/api/portraits/women/68.jpg",
+    title: "CTO & Co-founder",
+    company: "TechCorp Inc.",
+    location: "San Francisco, CA",
+    bio: "Experienced technology leader with a passion for innovation and building high-performing teams. Over 15 years of experience in software development and architecture.",
+    skills: ["Leadership", "Cloud Computing", "Software Architecture", "Agile"],
+    experience: [
+      {
+        id: "exp1",
+        title: "CTO & Co-founder",
+        company: "TechCorp Inc.",
+        location: "San Francisco, CA",
+        startDate: "2015-01",
+        endDate: null,
+        description:
+          "Driving the technical vision and strategy of the company. Leading a team of engineers to build scalable and innovative software solutions.",
+      },
+      {
+        id: "exp2",
+        title: "Software Architect",
+        company: "InnovateSoft",
+        location: "New York, NY",
+        startDate: "2010-06",
+        endDate: "2014-12",
+        description:
+          "Designed and implemented scalable software architectures for enterprise clients. Mentored junior developers and improved development processes.",
+      },
+    ],
+    education: [
+      {
+        id: "edu1",
+        school: "Stanford University",
+        degree: "Master of Science",
+        field: "Computer Science",
+        startDate: "2008-09",
+        endDate: "2010-06",
+        description: "Specialized in distributed systems and cloud computing.",
+      },
+      {
+        id: "edu2",
+        school: "University of California, Berkeley",
+        degree: "Bachelor of Science",
+        field: "Computer Science",
+        startDate: "2004-09",
+        endDate: "2008-06",
+        description: "Graduated with honors. Focused on software engineering.",
+      },
+    ],
+    connections: ["1", "2", "3", "4", "5"],
+  },
+  {
+    id: "7",
+    name: "Olivia Brown",
+    avatar: "https://randomuser.me/api/portraits/women/50.jpg",
+    title: "Frontend Developer",
+    company: "InnovateSoft",
+    location: "Seattle, WA",
+    bio: "Frontend developer with a passion for creating responsive and user-friendly web applications. Skilled in modern JavaScript frameworks.",
+    skills: ["JavaScript", "React", "CSS", "HTML", "TypeScript"],
+    experience: [
+      {
+        id: "exp1",
+        title: "Frontend Developer",
+        company: "InnovateSoft",
+        location: "Seattle, WA",
+        startDate: "2021-07",
+        endDate: null,
+        description:
+          "Developing and maintaining web applications using React and TypeScript. Collaborating with designers to create seamless user experiences.",
+      },
+    ],
+    education: [
+      {
+        id: "edu1",
+        school: "University of California, Los Angeles",
+        degree: "Bachelor of Science",
+        field: "Computer Science",
+        startDate: "2017-09",
+        endDate: "2021-06",
+        description: "Focused on web development and software engineering.",
+      },
+    ],
+    connections: ["1", "2", "3", "5"],
+  },
+  {
+    id: "8",
+    name: "Ethan Martinez",
+    avatar: "https://randomuser.me/api/portraits/men/60.jpg",
+    title: "DevOps Engineer",
+    company: "DataCorp",
+    location: "Boston, MA",
+    bio: "DevOps engineer with expertise in CI/CD pipelines, cloud infrastructure, and containerization. Passionate about automation and scalability.",
+    skills: ["AWS", "Docker", "Kubernetes", "Terraform", "CI/CD"],
+    experience: [
+      {
+        id: "exp1",
+        title: "DevOps Engineer",
+        company: "DataCorp",
+        location: "Boston, MA",
+        startDate: "2019-03",
+        endDate: null,
+        description:
+          "Implemented and managed CI/CD pipelines, reducing deployment times by 50%. Optimized cloud infrastructure for cost efficiency.",
+      },
+    ],
+    education: [
+      {
+        id: "edu1",
+        school: "Carnegie Mellon University",
+        degree: "Master of Science",
+        field: "Information Technology",
+        startDate: "2016-09",
+        endDate: "2018-05",
+        description: "Specialized in cloud computing and DevOps practices.",
+      },
+    ],
+    connections: ["4", "5", "6"],
+  },
+  {
+    id: "9",
+    name: "Sophia Lee",
+    avatar: "https://randomuser.me/api/portraits/women/40.jpg",
+    title: "AI Researcher",
+    company: "DataCorp",
+    location: "Boston, MA",
+    bio: "AI researcher with a focus on natural language processing and deep learning. Published multiple papers in top AI conferences.",
+    skills: ["Python", "TensorFlow", "NLP", "Deep Learning", "PyTorch"],
+    experience: [
+      {
+        id: "exp1",
+        title: "AI Researcher",
+        company: "DataCorp",
+        location: "Boston, MA",
+        startDate: "2020-01",
+        endDate: null,
+        description:
+          "Conducting research on NLP models and deploying them in production. Improved model accuracy by 15% through innovative techniques.",
+      },
+    ],
+    education: [
+      {
+        id: "edu1",
+        school: "Stanford University",
+        degree: "PhD",
+        field: "Artificial Intelligence",
+        startDate: "2015-09",
+        endDate: "2019-06",
+        description: "Focused on NLP and deep learning research.",
+      },
+    ],
+    connections: ["4", "6", "7"],
+  },
+  {
+    id: "10",
+    name: "Liam Davis",
+    avatar: "https://randomuser.me/api/portraits/men/70.jpg",
+    title: "Backend Developer",
+    company: "TechCorp Inc.",
+    location: "San Francisco, CA",
+    bio: "Backend developer with expertise in building scalable APIs and microservices. Experienced in database optimization and cloud solutions.",
+    skills: ["Node.js", "Express", "MongoDB", "PostgreSQL", "AWS"],
+    experience: [
+      {
+        id: "exp1",
+        title: "Backend Developer",
+        company: "TechCorp Inc.",
+        location: "San Francisco, CA",
+        startDate: "2022-05",
+        endDate: null,
+        description:
+          "Developing and maintaining backend services for enterprise applications. Improved API response times by 30% through optimization.",
+      },
+    ],
+    education: [
+      {
+        id: "edu1",
+        school: "University of Texas at Austin",
+        degree: "Bachelor of Science",
+        field: "Computer Science",
+        startDate: "2018-09",
+        endDate: "2022-05",
+        description: "Specialized in backend development and cloud computing.",
+      },
+    ],
+    connections: ["1", "6", "8"],
+  },
 ];
 
 export const jobsData: Job[] = [
@@ -411,6 +602,24 @@ export const postsData: Post[] = [
     liked: false,
   },
   {
+    id: "post9",
+    content:
+      "Excited to announce that we are hiring React developers at TechCorp! Check out the job posting on our profile. #hiring #reactjs #developers",
+    images: [
+      "https://images.unsplash.com/photo-1741851374674-e4b7e573a9e7?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8",
+      "https://images.unsplash.com/photo-1741866987680-5e3d7f052b87?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8",
+    ],
+    author: "John Doe",
+    authorId: "1",
+    authorAvatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    authorTitle: "Senior Software Engineer at TechCorp Inc.",
+    createdAt: "2025-04-10T14:30:00Z",
+    likes: 154,
+    comments: 32,
+    shares: 18,
+    liked: false,
+  },
+  {
     id: "post2",
     content:
       "Just published a new article on product management best practices. What strategies have you found most effective for prioritizing features? Would love to hear your thoughts! #productmanagement #agile",
@@ -423,6 +632,8 @@ export const postsData: Post[] = [
     createdAt: "2025-04-09T09:15:00Z",
     likes: 87,
     comments: 25,
+
+    authorId: "2",
     shares: 14,
     liked: true,
   },
@@ -431,7 +642,6 @@ export const postsData: Post[] = [
     content:
       "I'm speaking at the UX Design Conference next month on \"Designing for Accessibility\". If you're attending, let's connect! #uxdesign #accessibility #conference",
     images: [
-      "https://images.unsplash.com/photo-1742995186561-38d69a6d4f99?q=80&w=2900&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1742564386354-adb1a9dd4654?q=80&w=2920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ],
     author: "Michael Johnson",
@@ -441,6 +651,7 @@ export const postsData: Post[] = [
     likes: 112,
     comments: 19,
     shares: 22,
+    authorId: "3",
     liked: false,
   },
   {
@@ -459,6 +670,7 @@ export const postsData: Post[] = [
     comments: 42,
     shares: 35,
     liked: true,
+    authorId: "4",
   },
   {
     id: "post5",
@@ -472,6 +684,7 @@ export const postsData: Post[] = [
     likes: 143,
     comments: 38,
     shares: 27,
+    authorId: "5",
     liked: false,
   },
 ];

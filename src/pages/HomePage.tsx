@@ -2,42 +2,53 @@ import React from "react";
 import styled from "styled-components";
 import { postsData, profilesData } from "../data/mockData";
 import { useAuth } from "../context/AuthContext";
+import { MessageCircle, Share2, ThumbsUp } from "lucide-react";
 
 export const HomeContainer = styled.div`
-  padding-top: 64px; /* Navbar height */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: center;
+  align-items: start;
   width: 100vw;
+  gap: 40px;
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
   }
 `;
 
 export const MainContent = styled.main`
-  flex: 1;
+  flex: 3;
   padding: ${({ theme }) => theme.spacing[4]};
-  max-width: 680px;
-  margin: 0 auto;
+  margin: 0;
+  display: flex;
+  width: auto;
+  flex-direction: column;
+  /* flex-direction: column; */
 
+  border-inline: 1px solid ${({ theme }) => theme.colors.divider};
+
+  /* gap: ${({ theme }) => theme.spacing[4]}; */
+  justify-content: center;
+  align-items: center;
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     margin: 0 auto 0 320px; /* Center content when sidebar is visible */
   }
 `;
 
 export const SideContent = styled.aside`
-  width: 300px;
+  flex: 2;
   padding: ${({ theme }) => theme.spacing[4]};
-  position: fixed;
-  top: 64px;
-  right: 0;
-  height: calc(100vh - 64px);
   overflow-y: auto;
-  border-left: 1px solid ${({ theme }) => theme.colors.divider};
-  background-color: ${({ theme }) => theme.colors.background.paper};
+  background-color: ${({ theme }) => theme.colors.background.default};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: none;
   }
+`;
+export const ConnectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing[2]};
 `;
 
 export const Card = styled.div`
@@ -110,6 +121,7 @@ export const PostImage = styled.img`
 
 export const PostActions = styled.div`
   display: flex;
+  gap: ${({ theme }) => theme.spacing[2]};
   justify-content: space-between;
   padding-top: ${({ theme }) => theme.spacing[3]};
   border-top: 1px solid ${({ theme }) => theme.colors.divider};
@@ -142,6 +154,7 @@ export const CreatePostCard = styled(Card)`
   padding: ${({ theme }) => theme.spacing[4]};
   margin-bottom: ${({ theme }) => theme.spacing[4]};
   display: flex;
+  width: 100%;
   align-items: center;
 `;
 
@@ -194,28 +207,21 @@ const ConnectionTitle = styled.p`
   font-size: ${({ theme }) => theme.typography.caption.fontSize};
   color: ${({ theme }) => theme.colors.text.secondary};
 `;
-
 const formatDate = (dateString: string) => {
   const date = new Date(dateString);
   const now = new Date();
   const diffTime = Math.abs(now.getTime() - date.getTime());
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-  if (diffDays === 0) {
-    return "Today";
-  } else if (diffDays === 1) {
-    return "Yesterday";
-  } else if (diffDays < 7) {
-    return `${diffDays} days ago`;
-  } else {
-    return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
-  }
+  if (diffDays === 0) return "Today";
+  if (diffDays === 1) return "Yesterday";
+  if (diffDays < 7) return `${diffDays} days ago`;
+  return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
 };
 
 const HomePage: React.FC = () => {
   const { user } = useAuth();
 
-  // Filter connections based on user's connections
   const currentProfile = profilesData.find(
     (profile) => profile.id === user?.id
   );
@@ -249,7 +255,13 @@ const HomePage: React.FC = () => {
         {postsData.map((post) => (
           <PostCard key={post.id}>
             <PostHeader>
-              <Avatar src={post.authorAvatar} alt={post.author} />
+              <Avatar
+                src={post.authorAvatar}
+                alt={post.author}
+                onClick={() => {
+                  window.location.href = `/profile/${post.authorId}`;
+                }}
+              />
               <PostAuthorInfo>
                 <PostAuthorName>{post.author}</PostAuthorName>
                 <PostAuthorTitle>{post.authorTitle}</PostAuthorTitle>
@@ -268,18 +280,22 @@ const HomePage: React.FC = () => {
             )}
 
             <PostActions>
-              <PostAction active={post.liked}>
-                Like
-                <ActionCount>{post.likes}</ActionCount>
-              </PostAction>
-              <PostAction>
-                Comment
-                <ActionCount>{post.comments}</ActionCount>
-              </PostAction>
-              <PostAction>
-                Share
-                <ActionCount>{post.shares}</ActionCount>
-              </PostAction>
+              <div style={{ display: "flex" }}>
+                <PostAction active={post.liked}>
+                  <ThumbsUp size={16} style={{ marginRight: 6 }} /> Like
+                  <ActionCount>{post.likes}</ActionCount>
+                </PostAction>
+                <PostAction>
+                  <MessageCircle size={16} style={{ marginRight: 6 }} /> Comment
+                  <ActionCount>{post.comments}</ActionCount>
+                </PostAction>
+              </div>
+              <div>
+                <PostAction>
+                  <Share2 size={16} style={{ marginRight: 6 }} /> Share
+                  <ActionCount>{post.shares}</ActionCount>
+                </PostAction>
+              </div>
             </PostActions>
           </PostCard>
         ))}
@@ -287,21 +303,52 @@ const HomePage: React.FC = () => {
 
       <SideContent>
         <Card>
-          <div style={{ padding: "16px" }}>
-            <SideCardTitle>Your Connections</SideCardTitle>
-            {connections.map((connection) => (
-              <ConnectionCard key={connection.id}>
-                <Avatar
-                  src={connection.avatar}
-                  alt={connection.name}
-                  style={{ width: "32px", height: "32px" }}
-                />
-                <ConnectionInfo>
-                  <ConnectionName>{connection.name}</ConnectionName>
-                  <ConnectionTitle>{connection.title}</ConnectionTitle>
-                </ConnectionInfo>
-              </ConnectionCard>
-            ))}
+          <div
+            style={{
+              padding: "15px",
+            }}
+          >
+            <SideCardTitle>People You May Know</SideCardTitle>
+            <ConnectionContainer>
+              {connections.slice(0, 4).map((connection) => (
+                <ConnectionCard key={connection.id}>
+                  <Avatar
+                    src={connection.avatar}
+                    alt={connection.name}
+                    style={{ width: "32px", height: "32px" }}
+                  />
+                  <ConnectionInfo>
+                    <ConnectionName>{connection.name}</ConnectionName>
+                    <ConnectionTitle>{connection.title}</ConnectionTitle>
+                  </ConnectionInfo>
+                </ConnectionCard>
+              ))}
+              {connections.length > 4 && (
+                <div
+                  style={{
+                    marginTop: "10px",
+                    background: "none",
+                    border: "none",
+                    color: "#9d00ff",
+                    cursor: "pointer",
+                    textAlign: "left",
+                  }}
+                  onClick={() => {
+                    const container = document.getElementById("connections");
+                    if (container) {
+                      container.style.maxHeight =
+                        container.style.maxHeight === "none" ? "200px" : "none";
+                    }
+                  }}
+                >
+                  Show{" "}
+                  {document.getElementById("connections")?.style.maxHeight ===
+                  "none"
+                    ? "Less"
+                    : "More"}
+                </div>
+              )}
+            </ConnectionContainer>
           </div>
         </Card>
       </SideContent>

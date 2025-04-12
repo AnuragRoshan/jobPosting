@@ -6,9 +6,10 @@ const NotFoundContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
   justify-content: center;
   min-height: 100vh;
-  padding: ${({ theme }) => theme.spacing[4]};
+  /* padding: ${({ theme }) => theme.spacing[4]}; */
   text-align: center;
 `;
 

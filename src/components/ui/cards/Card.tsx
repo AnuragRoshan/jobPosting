@@ -8,28 +8,32 @@ interface CardProps {
 }
 
 export const Card = styled.div<CardProps>`
-  background-color: ${({ bgColor, theme }) =>
-    bgColor || theme.colors.background.paper};
+  background-color: transparent;
   border-radius: ${({ theme }) => theme.borderRadius.lg};
   box-shadow: ${({ elevation, theme }) =>
     elevation ? theme.shadows[elevation] : theme.shadows.md};
-  border: ${({ bordered, theme }) =>
-    bordered ? `1px solid ${theme.colors.divider}` : "none"};
+  border: 1px solid white;
   overflow: hidden;
   transition: box-shadow ${({ theme }) => theme.transitions.duration.short}ms
     ${({ theme }) => theme.transitions.easing.easeInOut};
 
   &:hover {
-    box-shadow: ${({ elevation, theme }) =>
-      elevation === "none"
-        ? theme.shadows.none
-        : elevation === "xs"
-        ? theme.shadows.sm
-        : elevation === "sm"
-        ? theme.shadows.md
-        : elevation === "md"
-        ? theme.shadows.lg
-        : theme.shadows.xl};
+    box-shadow: 10px 10px 0px ${({ theme }) => theme.colors.primary.main};
+    transform: translateY(-5px);
+    transition: box-shadow 500ms
+        ${({ theme }) => theme.transitions.easing.easeInOut},
+      transform 500ms ${({ theme }) => theme.transitions.easing.easeInOut};
+
+    background-color: ${({ bgColor, theme }) =>
+      bgColor || theme.colors.background.paper};
+  }
+
+  &:not(:hover) {
+    /* box-shadow: 5px 5px 0px ${({ theme }) => theme.colors.primary.dark}; */
+    transform: translateY(0);
+    transition: box-shadow 200ms
+        ${({ theme }) => theme.transitions.easing.easeInOut},
+      transform 400ms ${({ theme }) => theme.transitions.easing.easeInOut};
   }
 `;
 

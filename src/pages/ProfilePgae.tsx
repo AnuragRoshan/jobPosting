@@ -18,9 +18,9 @@ import {
   PostImages,
   PostTime,
 } from "./HomePage";
+import { CircleFadingPlus } from "lucide-react";
 
 const ProfileContainer = styled.div`
-  padding-top: 64px;
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -29,6 +29,32 @@ const ProfileContainer = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
     padding-left: 0;
+  }
+`;
+
+const COnnectContainer = styled.div`
+  display: flex;
+  gap: calc(${({ theme }) => theme.spacing[2]} * 1.5);
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.primary.main};
+  color: white;
+  padding: ${({ theme }) => theme.spacing[2]};
+  border-radius: ${({ theme }) => theme.borderRadius.full};
+  cursor: pointer;
+  margin-bottom: ${({ theme }) => theme.spacing[4]};
+  box-shadow: 0 1px 3px #73ff7144;
+  width: max-content;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary.light};
+    box-shadow: 0 1px 3px ${({ theme }) => theme.colors.primary.main};
+    color: ${({ theme }) => theme.colors.text.primary};
+    transform: translateY(-5px);
+    transition: transform 0.5s ease;
+  }
+  &:not(:hover) {
+    transform: translateY(0);
+    transition: transform 0.2s ease;
   }
 `;
 
@@ -118,7 +144,16 @@ const SkillTag = styled.span`
   background-color: ${({ theme }) => theme.colors.background.default};
   border-radius: ${({ theme }) => theme.borderRadius.full};
   font-size: ${({ theme }) => theme.typography.body2.fontSize};
-  color: ${({ theme }) => theme.colors.tertiary.main};
+  color: ${({ theme }) => theme.colors.tertiary.light};
+
+  box-shadow: 0 1px 3px #73ff7144;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary.light};
+    color: ${({ theme }) => theme.colors.background.paper};
+    box-shadow: 0 1px 3px ${({ theme }) => theme.colors.primary.main};
+    color: ${({ theme }) => theme.colors.text.primary};
+  }
 `;
 
 const ExperienceItem = styled.div`
@@ -181,6 +216,14 @@ const ProfilePage: React.FC = () => {
         <ProfileMain>
           <div>
             <ProfileInfo>
+              {id !== "1" ? (
+                <COnnectContainer>
+                  <CircleFadingPlus />
+                  <div>Connect</div>
+                </COnnectContainer>
+              ) : (
+                <></>
+              )}
               <ProfileAvatar src={profile.avatar} alt={profile.name} />
               <ProfileName>{profile.name}</ProfileName>
               <ProfileTitle>

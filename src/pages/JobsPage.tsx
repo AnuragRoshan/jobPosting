@@ -6,14 +6,18 @@ import { Card } from "../components/ui/cards/Card";
 // import { HomeContainer } from "./HomePage";
 
 export const JobsContainer = styled.div`
-  padding: 64px; /* Navbar height */
+  padding: 10px 64px; /* Navbar height */
   display: flex;
   flex-direction: column;
   width: 100vw;
+  min-height: 100vh;
+  height: max-content;
   padding-left: 300px;
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
   }
+  justify-content: baseline;
+  /* align-items: center; */
 `;
 
 const JobsHeader = styled.div`
@@ -54,7 +58,8 @@ const SearchInput = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.divider};
   border-radius: ${({ theme }) => theme.borderRadius.md};
   font-size: ${({ theme }) => theme.typography.body1.fontSize};
-  color: ${({ theme }) => theme.colors.text.primary};
+  color: ${({ theme }) => theme.colors.text.secondary};
+  background-color: white;
 
   &:focus {
     outline: none;
@@ -65,7 +70,7 @@ const SearchInput = styled.input`
 const JobsList = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: ${({ theme }) => theme.spacing[3]};
+  gap: ${({ theme }) => theme.spacing[8]};
 `;
 
 const JobCard = styled(Card)`

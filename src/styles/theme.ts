@@ -1,5 +1,82 @@
 import "styled-components";
 
+// Universe types for the multiverse theme
+export type UniverseType =
+  | "cybertech"
+  | "fantasy"
+  | "corporate"
+  | "cosmic"
+  | "steampunk";
+
+// Universe-specific color schemes
+export interface UniverseColors {
+  cybertech: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    background: string;
+    text: string;
+    glow: string;
+    grid: string;
+    neon: string;
+    dark: string;
+    light: string;
+    portal: string;
+  };
+  fantasy: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    background: string;
+    text: string;
+    magic: string;
+    nature: string;
+    ancient: string;
+    dark: string;
+    light: string;
+    portal: string;
+  };
+  corporate: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    background: string;
+    text: string;
+    highlight: string;
+    subtle: string;
+    professional: string;
+    dark: string;
+    light: string;
+    portal: string;
+  };
+  cosmic: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    background: string;
+    text: string;
+    nebula: string;
+    stars: string;
+    void: string;
+    dark: string;
+    light: string;
+    portal: string;
+  };
+  steampunk: {
+    primary: string;
+    secondary: string;
+    accent: string;
+    background: string;
+    text: string;
+    brass: string;
+    copper: string;
+    steam: string;
+    dark: string;
+    light: string;
+    portal: string;
+  };
+}
+
 export interface Colors {
   primary: {
     main: string;
@@ -56,6 +133,7 @@ export interface Colors {
     gradient: string;
   };
   divider: string;
+  universes: UniverseColors;
 }
 
 export interface Typography {
@@ -72,6 +150,13 @@ export interface Typography {
   subtitle2: TextStyle;
   caption: TextStyle;
   button: TextStyle;
+  universeFonts: {
+    cybertech: string;
+    fantasy: string;
+    corporate: string;
+    cosmic: string;
+    steampunk: string;
+  };
 }
 
 export interface TextStyle {
@@ -97,6 +182,13 @@ export interface Shadows {
   outline: string;
   none: string;
   glow: string;
+  universes: {
+    cybertech: string;
+    fantasy: string;
+    corporate: string;
+    cosmic: string;
+    steampunk: string;
+  };
 }
 
 export interface Breakpoints {
@@ -127,6 +219,8 @@ export interface ZIndex {
   modal: number;
   snackbar: number;
   tooltip: number;
+  portal: number;
+  universe: number;
 }
 
 export interface Transitions {
@@ -137,6 +231,8 @@ export interface Transitions {
     sharp: string;
     bounce: string;
     elastic: string;
+    portal: string;
+    rift: string;
   };
   duration: {
     shortest: number;
@@ -146,6 +242,9 @@ export interface Transitions {
     complex: number;
     enteringScreen: number;
     leavingScreen: number;
+    portalOpen: number;
+    portalTransition: number;
+    universeShift: number;
   };
 }
 
@@ -162,6 +261,16 @@ export interface Animation {
     spin: string;
     shimmer: string;
     glow: string;
+    portalOpen: string;
+    portalClose: string;
+    portalTravel: string;
+    cybertechGlitch: string;
+    fantasyMagic: string;
+    corporateSlide: string;
+    cosmicExpand: string;
+    steampunkGears: string;
+    dimensionalRift: string;
+    universeTransition: string;
   };
   variants: {
     fadeIn: AnimationVariant;
@@ -175,6 +284,16 @@ export interface Animation {
     spin: AnimationVariant;
     shimmer: AnimationVariant;
     glow: AnimationVariant;
+    portalOpen: AnimationVariant;
+    portalClose: AnimationVariant;
+    portalTravel: AnimationVariant;
+    cybertechGlitch: AnimationVariant;
+    fantasyMagic: AnimationVariant;
+    corporateSlide: AnimationVariant;
+    cosmicExpand: AnimationVariant;
+    steampunkGears: AnimationVariant;
+    dimensionalRift: AnimationVariant;
+    universeTransition: AnimationVariant;
   };
 }
 
@@ -200,7 +319,7 @@ declare module "styled-components" {
 export const theme = {
   colors: {
     primary: {
-      main: "#6d28d5", // Improved purple
+      main: "#6d28d9", // Improved purple
       light: "#8b5cf6",
       dark: "#4c1d95",
       contrastText: "#ffffff",
@@ -265,6 +384,73 @@ export const theme = {
       gradient: "linear-gradient(145deg, #09090b 0%, #18181b 100%)",
     },
     divider: "#3f3f46",
+    universes: {
+      cybertech: {
+        primary: "#00f0ff", // Neon cyan
+        secondary: "#ff00e4", // Neon magenta
+        accent: "#fffc00", // Neon yellow
+        background: "#0a0a1e", // Dark blue-black
+        text: "#ffffff",
+        glow: "rgba(0, 240, 255, 0.8)",
+        grid: "#1a1a3a",
+        neon: "#00ff9f",
+        dark: "#050510",
+        light: "#2a2a4a",
+        portal: "radial-gradient(circle, #00f0ff 0%, #0a0a1e 70%)",
+      },
+      fantasy: {
+        primary: "#9f7aea", // Mystical purple
+        secondary: "#38b2ac", // Enchanted teal
+        accent: "#f6ad55", // Magical amber
+        background: "#2d3748", // Deep slate
+        text: "#e2e8f0",
+        magic: "#f6e05e", // Glowing yellow
+        nature: "#68d391", // Forest green
+        ancient: "#b7791f", // Aged gold
+        dark: "#1a202c",
+        light: "#4a5568",
+        portal: "radial-gradient(circle, #9f7aea 0%, #2d3748 70%)",
+      },
+      corporate: {
+        primary: "#3182ce", // Professional blue
+        secondary: "#718096", // Slate gray
+        accent: "#dd6b20", // Accent orange
+        background: "#f7fafc", // Clean white
+        text: "#1a202c",
+        highlight: "#ebf8ff", // Light blue highlight
+        subtle: "#e2e8f0", // Subtle gray
+        professional: "#2c5282", // Deep blue
+        dark: "#2d3748",
+        light: "#edf2f7",
+        portal: "radial-gradient(circle, #3182ce 0%, #f7fafc 70%)",
+      },
+      cosmic: {
+        primary: "#805ad5", // Cosmic purple
+        secondary: "#d53f8c", // Stellar pink
+        accent: "#38b2ac", // Nebula teal
+        background: "#000000", // Void black
+        text: "#e2e8f0",
+        nebula: "linear-gradient(to right, #805ad5, #d53f8c, #38b2ac)",
+        stars: "#ffffff",
+        void: "#0a0514",
+        dark: "#0a0514",
+        light: "#2d3748",
+        portal: "radial-gradient(circle, #805ad5 0%, #000000 70%)",
+      },
+      steampunk: {
+        primary: "#b7791f", // Brass
+        secondary: "#c05621", // Copper
+        accent: "#2b6cb0", // Blue accent
+        background: "#2d2a22", // Aged paper
+        text: "#e2e8f0",
+        brass: "#d69e2e",
+        copper: "#dd6b20",
+        steam: "#cbd5e0",
+        dark: "#1a1814",
+        light: "#4a4538",
+        portal: "radial-gradient(circle, #b7791f 0%, #2d2a22 70%)",
+      },
+    },
   },
   typography: {
     fontFamily:
@@ -338,6 +524,13 @@ export const theme = {
       textTransform: "none",
       letterSpacing: "0.02em",
     },
+    universeFonts: {
+      cybertech: "'Orbitron', 'Rajdhani', 'Inter', sans-serif",
+      fantasy: "'Cinzel', 'Fondamento', 'Inter', serif",
+      corporate: "'Poppins', 'Inter', 'Segoe UI', sans-serif",
+      cosmic: "'Exo 2', 'Nova Square', 'Inter', sans-serif",
+      steampunk: "'Playfair Display', 'IM Fell English', 'Inter', serif",
+    },
   },
   spacing: {
     0: "0",
@@ -370,6 +563,13 @@ export const theme = {
     outline: "0 0 0 3px rgba(109, 40, 217, 0.4)",
     none: "none",
     glow: "0 0 15px rgba(109, 40, 217, 0.5)",
+    universes: {
+      cybertech: "0 0 20px rgba(0, 240, 255, 0.7)",
+      fantasy: "0 0 15px rgba(159, 122, 234, 0.6)",
+      corporate: "0 10px 25px rgba(49, 130, 206, 0.2)",
+      cosmic: "0 0 30px rgba(128, 90, 213, 0.8)",
+      steampunk: "0 5px 15px rgba(183, 121, 31, 0.5)",
+    },
   },
   breakpoints: {
     xs: "0px",
@@ -397,6 +597,8 @@ export const theme = {
     modal: 1300,
     snackbar: 1400,
     tooltip: 1500,
+    portal: 1600,
+    universe: 1700,
   },
   transitions: {
     easing: {
@@ -406,6 +608,8 @@ export const theme = {
       sharp: "cubic-bezier(0.4, 0, 0.6, 1)",
       bounce: "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
       elastic: "cubic-bezier(0.68, -0.55, 0.265, 1.55)",
+      portal: "cubic-bezier(0.34, 1.56, 0.64, 1)",
+      rift: "cubic-bezier(0.16, 1, 0.3, 1)",
     },
     duration: {
       shortest: 150,
@@ -415,6 +619,9 @@ export const theme = {
       complex: 375,
       enteringScreen: 225,
       leavingScreen: 195,
+      portalOpen: 800,
+      portalTransition: 1200,
+      universeShift: 1500,
     },
   },
   animation: {
@@ -515,6 +722,164 @@ export const theme = {
           100% { box-shadow: 0 0 5px rgba(109, 40, 217, 0.5); }
         }
       `,
+      portalOpen: `
+        @keyframes portalOpen {
+          0% { 
+            transform: scale(0);
+            opacity: 0;
+          }
+          70% {
+            transform: scale(1.1);
+            opacity: 0.9;
+          }
+          100% { 
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+      `,
+      portalClose: `
+        @keyframes portalClose {
+          0% { 
+            transform: scale(1);
+            opacity: 1;
+          }
+          100% { 
+            transform: scale(0);
+            opacity: 0;
+          }
+        }
+      `,
+      portalTravel: `
+        @keyframes portalTravel {
+          0% { 
+            transform: scale(1) rotate(0deg);
+            filter: hue-rotate(0deg);
+          }
+          50% {
+            transform: scale(1.5) rotate(180deg);
+            filter: hue-rotate(180deg) brightness(1.5);
+          }
+          100% { 
+            transform: scale(0) rotate(360deg);
+            filter: hue-rotate(360deg);
+          }
+        }
+      `,
+      cybertechGlitch: `
+        @keyframes cybertechGlitch {
+          0% {
+            clip-path: inset(40% 0 61% 0);
+            transform: skew(0.15deg);
+          }
+          20% {
+            clip-path: inset(75% 0 23% 0);
+            transform: skew(0.3deg);
+          }
+          40% {
+            clip-path: inset(9% 0 38% 0);
+            transform: skew(-0.1deg);
+          }
+          60% {
+            clip-path: inset(33% 0 97% 0);
+            transform: skew(0.4deg);
+          }
+          80% {
+            clip-path: inset(23% 0 56% 0);
+            transform: skew(-0.2deg);
+          }
+          100% {
+            clip-path: inset(67% 0 4% 0);
+            transform: skew(-0.1deg);
+          }
+        }
+      `,
+      fantasyMagic: `
+        @keyframes fantasyMagic {
+          0% {
+            background-position: 0% 50%;
+            filter: hue-rotate(0deg) brightness(1);
+          }
+          50% {
+            background-position: 100% 50%;
+            filter: hue-rotate(180deg) brightness(1.3);
+          }
+          100% {
+            background-position: 0% 50%;
+            filter: hue-rotate(360deg) brightness(1);
+          }
+        }
+      `,
+      corporateSlide: `
+        @keyframes corporateSlide {
+          0% {
+            transform: translateY(20px);
+            opacity: 0;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 1;
+          }
+        }
+      `,
+      cosmicExpand: `
+        @keyframes cosmicExpand {
+          0% {
+            transform: scale(0.8);
+            opacity: 0;
+            filter: brightness(0.5);
+          }
+          50% {
+            opacity: 0.5;
+            filter: brightness(1.2);
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+            filter: brightness(1);
+          }
+        }
+      `,
+      steampunkGears: `
+        @keyframes steampunkGears {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `,
+      dimensionalRift: `
+        @keyframes dimensionalRift {
+          0% {
+            transform: scale(1) rotate(0deg);
+            filter: blur(0px) brightness(1);
+          }
+          50% {
+            transform: scale(1.5) rotate(180deg);
+            filter: blur(10px) brightness(1.5);
+          }
+          100% {
+            transform: scale(1) rotate(360deg);
+            filter: blur(0px) brightness(1);
+          }
+        }
+      `,
+      universeTransition: `
+        @keyframes universeTransition {
+          0% {
+            opacity: 0;
+            transform: scale(0.9);
+            filter: blur(10px);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1);
+            filter: blur(0px);
+          }
+        }
+      `,
     },
     variants: {
       fadeIn: {
@@ -560,6 +925,46 @@ export const theme = {
       glow: {
         className: "animate-glow",
         css: "animation: glow 2s ease-in-out infinite;",
+      },
+      portalOpen: {
+        className: "animate-portalOpen",
+        css: "animation: portalOpen 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;",
+      },
+      portalClose: {
+        className: "animate-portalClose",
+        css: "animation: portalClose 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;",
+      },
+      portalTravel: {
+        className: "animate-portalTravel",
+        css: "animation: portalTravel 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;",
+      },
+      cybertechGlitch: {
+        className: "animate-cybertechGlitch",
+        css: "animation: cybertechGlitch 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;",
+      },
+      fantasyMagic: {
+        className: "animate-fantasyMagic",
+        css: "animation: fantasyMagic 3s ease infinite; background-size: 200% 200%;",
+      },
+      corporateSlide: {
+        className: "animate-corporateSlide",
+        css: "animation: corporateSlide 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;",
+      },
+      cosmicExpand: {
+        className: "animate-cosmicExpand",
+        css: "animation: cosmicExpand 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;",
+      },
+      steampunkGears: {
+        className: "animate-steampunkGears",
+        css: "animation: steampunkGears 4s linear infinite;",
+      },
+      dimensionalRift: {
+        className: "animate-dimensionalRift",
+        css: "animation: dimensionalRift 2s cubic-bezier(0.16, 1, 0.3, 1) forwards;",
+      },
+      universeTransition: {
+        className: "animate-universeTransition",
+        css: "animation: universeTransition 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;",
       },
     },
   },

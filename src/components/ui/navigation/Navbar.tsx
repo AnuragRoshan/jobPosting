@@ -39,6 +39,7 @@ const Logo = styled(Link)`
 const NavLinks = styled.div`
   display: flex;
   gap: 2rem;
+  color: white;
   align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {

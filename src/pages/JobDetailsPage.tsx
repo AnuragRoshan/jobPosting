@@ -3,7 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 import { jobsData, profilesData } from "../data/mockData";
 import { JobLogo, JobMeta, JobMetaItem, JobTypeTag } from "./JobsPage";
-import { Button } from "./LoginPage";
+// import { Button } from "./LoginPage";
 import { Card } from "./HomePage";
 
 const JobDetailContainer = styled.div`
@@ -16,6 +16,30 @@ const JobDetailContainer = styled.div`
   padding-left: 300px;
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
+  }
+`;
+
+const ApplyButtonContainer = styled.div`
+  text-decoration: none;
+  color: ${({ theme }) => theme.colors.text.primary};
+  padding: ${({ theme }) => theme.spacing[2]};
+  display: flex;
+  font-size: large;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  border: 1px solid white;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.primary.main};
+    color: #fff;
+    transition: background-color 0.5s ease, color 0.5s ease, transform 0.5s ease;
+    transform: translateY(3px);
+    text-decoration: none;
+    box-shadow: 0 5px 0 rgb(187, 0, 255);
+    cursor: pointer;
   }
 `;
 
@@ -71,7 +95,7 @@ const JobSectionTitle = styled.h3`
   margin: 0 0 ${({ theme }) => theme.spacing[2]} 0;
   font-size: ${({ theme }) => theme.typography.h6.fontSize};
   font-weight: ${({ theme }) => theme.typography.h6.fontWeight};
-  color: ${({ theme }) => theme.colors.text.primary};
+  color: ${({ theme }) => theme.colors.primary.main};
 `;
 
 const JobRequirementsList = styled.ul`
@@ -85,23 +109,23 @@ const JobRequirementItem = styled.li`
   color: ${({ theme }) => theme.colors.text.primary};
 `;
 
-const ApplyButton = styled.button`
-  width: 100%;
-  padding: ${({ theme }) => `${theme.spacing[3]} ${theme.spacing[4]}`};
-  background-color: ${({ theme }) => theme.colors.primary.main};
-  color: #fff;
-  border: none;
-  border-radius: ${({ theme }) => theme.borderRadius.md};
-  font-size: ${({ theme }) => theme.typography.button.fontSize};
-  font-weight: ${({ theme }) => theme.typography.button.fontWeight};
-  text-transform: uppercase;
-  cursor: pointer;
-  margin-top: ${({ theme }) => theme.spacing[4]};
+// const ApplyButton = styled.button`
+//   width: 100%;
+//   padding: ${({ theme }) => `${theme.spacing[3]} ${theme.spacing[4]}`};
+//   background-color: ${({ theme }) => theme.colors.primary.main};
+//   color: #fff;
+//   border: none;
+//   border-radius: ${({ theme }) => theme.borderRadius.md};
+//   font-size: ${({ theme }) => theme.typography.button.fontSize};
+//   font-weight: ${({ theme }) => theme.typography.button.fontWeight};
+//   text-transform: uppercase;
+//   cursor: pointer;
+//   margin-top: ${({ theme }) => theme.spacing[4]};
 
-  &:hover {
-    background-color: ${({ theme }) => theme.colors.primary.dark};
-  }
-`;
+//   &:hover {
+//     background-color: ${({ theme }) => theme.colors.primary.dark};
+//   }
+// `;
 
 const JobPostedByCard = styled(Card)`
   padding: ${({ theme }) => theme.spacing[4]};
@@ -224,7 +248,13 @@ const JobDetailsPage: React.FC = () => {
               </JobRequirementsList>
             </JobSection>
 
-            <ApplyButton>Apply Now</ApplyButton>
+            <ApplyButtonContainer
+              style={{
+                marginTop: "30px",
+              }}
+            >
+              Apply Now
+            </ApplyButtonContainer>
           </JobDetailCard>
         </div>
 
@@ -242,20 +272,17 @@ const JobDetailsPage: React.FC = () => {
               to={`/profile/${postedBy.id}`}
               style={{ textDecoration: "none" }}
             >
-              <Button
+              <ApplyButtonContainer
                 style={{
                   width: "100%",
-                  background: "transparent",
-                  color: "#0077B5",
-                  border: "1px solid #0077B5",
                 }}
               >
                 View Profile
-              </Button>
+              </ApplyButtonContainer>
             </Link>
           </JobPostedByCard>
 
-          <JobPostedByCard style={{ marginTop: "20px" }}>
+          <JobPostedByCard style={{ marginTop: "0px" }}>
             <JobSectionTitle>Job Details</JobSectionTitle>
             <JobDetailsMeta>
               <JobDetailsMetaItem>
@@ -279,7 +306,7 @@ const JobDetailsPage: React.FC = () => {
                 <MetaValue>{job.applicants}</MetaValue>
               </JobDetailsMetaItem>
             </JobDetailsMeta>
-            <ApplyButton>Apply Now</ApplyButton>
+            <ApplyButtonContainer>Apply Now</ApplyButtonContainer>
           </JobPostedByCard>
         </div>
       </div>
