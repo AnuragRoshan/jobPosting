@@ -6,7 +6,6 @@ import {
   ActionCount,
   Avatar,
   Card,
-  //   HomeContainer,
   PostAction,
   PostActions,
   PostAuthorInfo,
@@ -21,7 +20,7 @@ import {
 } from "./HomePage";
 
 const ProfileContainer = styled.div`
-  padding-top: 64px; /* Navbar height */
+  padding-top: 64px;
   display: flex;
   flex-direction: column;
   width: 100vw;
@@ -61,6 +60,7 @@ const ProfileInfo = styled(Card)`
   position: relative;
   margin-top: -100px;
   padding: ${({ theme }) => theme.spacing[4]};
+  border-left: 4px solid ${({ theme }) => theme.colors.primary.main};
 `;
 
 const ProfileAvatar = styled.img`
@@ -76,7 +76,7 @@ const ProfileName = styled.h1`
   margin: 0;
   font-size: ${({ theme }) => theme.typography.h4.fontSize};
   font-weight: ${({ theme }) => theme.typography.h4.fontWeight};
-  color: ${({ theme }) => theme.colors.text.primary};
+  color: ${({ theme }) => theme.colors.primary.main};
   text-align: center;
 `;
 
@@ -102,7 +102,7 @@ const ProfileSectionTitle = styled.h2`
   margin: 0 0 ${({ theme }) => theme.spacing[3]} 0;
   font-size: ${({ theme }) => theme.typography.h6.fontSize};
   font-weight: ${({ theme }) => theme.typography.h6.fontWeight};
-  color: ${({ theme }) => theme.colors.text.primary};
+  color: ${({ theme }) => theme.colors.primary.light};
   padding-bottom: ${({ theme }) => theme.spacing[2]};
   border-bottom: 1px solid ${({ theme }) => theme.colors.divider};
 `;
@@ -118,11 +118,15 @@ const SkillTag = styled.span`
   background-color: ${({ theme }) => theme.colors.background.default};
   border-radius: ${({ theme }) => theme.borderRadius.full};
   font-size: ${({ theme }) => theme.typography.body2.fontSize};
-  color: ${({ theme }) => theme.colors.text.primary};
+  color: ${({ theme }) => theme.colors.tertiary.main};
 `;
 
 const ExperienceItem = styled.div`
   margin-bottom: ${({ theme }) => theme.spacing[4]};
+  box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+  border: 0.2px solid ${({ theme }) => theme.colors.divider};
+  padding: 0.5em;
+  border-radius: ${({ theme }) => theme.borderRadius.md};
 `;
 
 const ExperienceTitle = styled.h3`
@@ -136,7 +140,7 @@ const ExperienceCompany = styled.h4`
   margin: ${({ theme }) => theme.spacing[1]} 0 0;
   font-size: ${({ theme }) => theme.typography.body1.fontSize};
   font-weight: ${({ theme }) => theme.typography.subtitle2.fontWeight};
-  color: ${({ theme }) => theme.colors.text.primary};
+  color: ${({ theme }) => theme.colors.secondary.main};
 `;
 
 const ExperienceDate = styled.p`
@@ -145,13 +149,13 @@ const ExperienceDate = styled.p`
   color: ${({ theme }) => theme.colors.text.secondary};
 `;
 
-const formatDate = (date: string) => {
-  const d = new Date(date);
-  return d.toLocaleDateString("en-US", {
+const formatDate = (dateString: string) => {
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
     month: "long",
     day: "numeric",
-    year: "numeric",
-  });
+  };
+  return new Date(dateString).toLocaleDateString("en-US", options);
 };
 
 const ProfilePage: React.FC = () => {

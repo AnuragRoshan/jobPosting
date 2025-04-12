@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { jobsData } from "../data/mockData";
 import { Card } from "../components/ui/cards/Card";
 // import { HomeContainer } from "./HomePage";
@@ -256,6 +256,7 @@ const JobsPage: React.FC = () => {
     }
   };
 
+  const navigate = useNavigate();
   return (
     <JobsContainer>
       <JobsHeader>
@@ -273,7 +274,15 @@ const JobsPage: React.FC = () => {
       <JobsList>
         {filteredJobs.map((job) => (
           <JobCard key={job.id}>
-            <JobLogo src={job.companyLogo} alt={job.company} />
+            <JobLogo
+              src={job.companyLogo}
+              alt={job.company}
+              onClick={() => {
+                if (job.id) {
+                  navigate(`/companies/${job.company.toLowerCase()}`);
+                }
+              }}
+            />
             <JobContent>
               <JobHeader>
                 <div>

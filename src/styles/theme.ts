@@ -200,7 +200,7 @@ declare module "styled-components" {
 export const theme = {
   colors: {
     primary: {
-      main: "#6d28d9", // Improved purple
+      main: "#6d28d5", // Improved purple
       light: "#8b5cf6",
       dark: "#4c1d95",
       contrastText: "#ffffff",

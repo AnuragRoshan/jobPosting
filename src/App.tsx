@@ -22,6 +22,8 @@ import RegisterPage from "./pages/RegisterPage";
 import NotFoundPage from "./pages/NotFoundPage";
 import { Navbar } from "./components/ui/navigation/Navbar";
 import { Sidebar } from "./components/ui/navigation/Sidebar";
+// import CompanyProfilePage from "./pages/CompanyPorfilePage";
+import CompanyDetailsPage from "./pages/CompanyPorfilePage";
 
 // Protected route wrapper component
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
@@ -85,6 +87,7 @@ const AppContent: React.FC<AppContentProps> = ({
             <NavLink to="/">Home</NavLink>
             <NavLink to="/jobs">Jobs</NavLink>
             <NavLink to={`/profile/${user.id}`}>Profile</NavLink>
+            {/* <NavLink to=  "/company">Company Profile</NavLink> */}
           </Sidebar>
         </>
       )}
@@ -107,6 +110,7 @@ const AppContent: React.FC<AppContentProps> = ({
             </ProtectedRoute>
           }
         />
+        <Route path="/companies/:companyId" element={<CompanyDetailsPage />} />
         <Route
           path="/jobs"
           element={
