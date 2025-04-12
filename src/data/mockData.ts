@@ -284,7 +284,8 @@ export const jobsData: Job[] = [
     id: "job1",
     title: "Senior React Developer",
     company: "TechCorp Inc.",
-    companyLogo: "/api/placeholder/64/64",
+    companyLogo:
+      "https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?semt=ais_hybrid&w=740",
     location: "San Francisco, CA (Remote)",
     type: "Full-time",
     salary: "$120,000 - $150,000",
@@ -305,7 +306,8 @@ export const jobsData: Job[] = [
     id: "job2",
     title: "Product Manager",
     company: "InnovateSoft",
-    companyLogo: "/api/placeholder/64/64",
+    companyLogo:
+      "https://img.freepik.com/premium-vector/eh-calligraphic-signature-vector-logo-design-with-circle-gold-color-leaf-flower_1119385-142.jpg?semt=ais_hybrid&w=740",
     location: "New York, NY",
     type: "Full-time",
     salary: "$110,000 - $140,000",
@@ -326,7 +328,8 @@ export const jobsData: Job[] = [
     id: "job3",
     title: "UX/UI Designer",
     company: "DesignLab",
-    companyLogo: "/api/placeholder/64/64",
+    companyLogo:
+      "https://img.freepik.com/free-psd/gold-logo-mockup-grey-wall_511564-1489.jpg?semt=ais_hybrid&w=740",
     location: "Remote",
     type: "Full-time",
     salary: "$90,000 - $120,000",
@@ -347,7 +350,8 @@ export const jobsData: Job[] = [
     id: "job4",
     title: "Data Scientist",
     company: "DataCorp",
-    companyLogo: "/api/placeholder/64/64",
+    companyLogo:
+      "https://img.freepik.com/free-vector/gradient-quill-pen-design-template_23-2149837194.jpg?semt=ais_hybrid&w=740",
     location: "Boston, MA (Hybrid)",
     type: "Full-time",
     salary: "$130,000 - $160,000",
@@ -368,7 +372,8 @@ export const jobsData: Job[] = [
     id: "job5",
     title: "Digital Marketing Specialist",
     company: "GrowthMedia",
-    companyLogo: "/api/placeholder/64/64",
+    companyLogo:
+      "https://img.freepik.com/premium-vector/luxury-leh-logo-design-elegant-letter-leh-monogram-logo-minimalist-polygon-leh-logo-design-template_1101554-79962.jpg?semt=ais_hybrid&w=740",
     location: "Chicago, IL",
     type: "Full-time",
     salary: "$70,000 - $90,000",

@@ -36,7 +36,9 @@ const ProfileContainer = styled.div`
 const ProfileHeader = styled.div`
   position: relative;
   height: 200px;
-  background-color: ${({ theme }) => theme.colors.primary.light};
+  background-image: url("https://images.unsplash.com/photo-1742944085736-65d142cef76d?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwyNHx8fGVufDB8fHx8fA%3D%3D");
+  background-size: cover;
+  background-position: center;
 `;
 
 const ProfileContent = styled.div`

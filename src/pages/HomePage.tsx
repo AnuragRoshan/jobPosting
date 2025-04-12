@@ -43,7 +43,7 @@ export const SideContent = styled.aside`
 export const Card = styled.div`
   background-color: ${({ theme }) => theme.colors.background.paper};
   border-radius: ${({ theme }) => theme.borderRadius.md};
-  box-shadow: ${({ theme }) => theme.shadows.sm};
+  /* box-shadow: ${({ theme }) => theme.shadows.sm}; */
   margin-bottom: ${({ theme }) => theme.spacing[4]};
   overflow: hidden;
 `;
@@ -230,7 +230,20 @@ const HomePage: React.FC = () => {
       <MainContent>
         <CreatePostCard>
           <Avatar src={user?.avatar} alt={user?.name} />
-          <CreatePostInput>What's on your mind?</CreatePostInput>
+          <CreatePostInput>
+            <input
+              type="text"
+              placeholder="What's on your mind?"
+              style={{
+                width: "100%",
+                border: "none",
+                outline: "none",
+                background: "transparent",
+                fontSize: "inherit",
+                color: "inherit",
+              }}
+            />
+          </CreatePostInput>
         </CreatePostCard>
 
         {postsData.map((post) => (
