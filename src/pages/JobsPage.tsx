@@ -6,18 +6,20 @@ import { Card } from "../components/ui/cards/Card";
 // import { HomeContainer } from "./HomePage";
 
 export const JobsContainer = styled.div`
-  padding: 10px 64px; /* Navbar height */
+  padding: 10px 64px;
   display: flex;
   flex-direction: column;
-  width: 100vw;
   min-height: 100vh;
   height: max-content;
-  padding-left: 300px;
+  overflow-x: auto;
+  width: 100%;
+  box-sizing: border-box;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
+    padding-left: 16px;
+    padding-right: 16px;
   }
-  justify-content: baseline;
-  /* align-items: center; */
 `;
 
 const JobsHeader = styled.div`
@@ -284,7 +286,11 @@ const JobsPage: React.FC = () => {
               alt={job.company}
               onClick={() => {
                 if (job.id) {
-                  navigate(`/companies/${job.company.toLowerCase()}`);
+                  navigate(
+                    `/companies/${job.company
+                      .toLowerCase()
+                      .replace(/\s+/g, "-")}`
+                  );
                 }
               }}
             />

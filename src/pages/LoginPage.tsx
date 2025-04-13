@@ -8,7 +8,7 @@ export const LoginContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   padding: ${({ theme }) => theme.spacing[4]};
   background-color: ${({ theme }) => theme.colors.background.default};
@@ -110,7 +110,7 @@ export const SignUpLink = styled(Link)`
 export const Logo = styled.div`
   font-size: ${({ theme }) => theme.typography.h3.fontSize};
   font-weight: ${({ theme }) => theme.typography.h3.fontWeight};
-  color: ${({ theme }) => theme.colors.primary.main};
+  color: ${({ theme }) => theme.colors.secondary.main};
   margin-bottom: ${({ theme }) => theme.spacing[6]};
 `;
 

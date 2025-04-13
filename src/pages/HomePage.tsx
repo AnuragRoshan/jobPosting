@@ -9,35 +9,31 @@ export const HomeContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: start;
-  width: 100vw;
-  gap: 40px;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  padding: 0 32px;
+  gap: 32px;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
+    padding: 0 16px;
   }
 `;
 
 export const MainContent = styled.main`
   flex: 3;
-  padding: ${({ theme }) => theme.spacing[4]};
-  margin: 0;
   display: flex;
-  width: auto;
   flex-direction: column;
-  /* flex-direction: column; */
-
-  border-inline: 1px solid ${({ theme }) => theme.colors.divider};
-
-  /* gap: ${({ theme }) => theme.spacing[4]}; */
+  padding-block: 32px;
+  /* border-inline: 1px solid ${({ theme }) => theme.colors.divider}; */
   justify-content: center;
   align-items: center;
-  @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
-    margin: 0 auto 0 320px; /* Center content when sidebar is visible */
-  }
 `;
 
 export const SideContent = styled.aside`
   flex: 2;
-  padding: ${({ theme }) => theme.spacing[4]};
   overflow-y: auto;
   background-color: ${({ theme }) => theme.colors.background.default};
 
@@ -127,7 +123,7 @@ export const PostActions = styled.div`
   border-top: 1px solid ${({ theme }) => theme.colors.divider};
 `;
 
-export const PostAction = styled.button<{ active?: boolean }>`
+export const PostAction = styled.div<{ active?: boolean }>`
   display: flex;
   align-items: center;
   background: none;
@@ -143,6 +139,10 @@ export const PostAction = styled.button<{ active?: boolean }>`
     ${({ theme }) => theme.transitions.easing.easeInOut};
 
   &:hover {
+    transform: scale(1.2);
+    transition: transform 200ms
+      ${({ theme }) => theme.transitions.easing.easeInOut};
+    transform: scale(1.2) rotate(-5deg);
   }
 `;
 
@@ -282,17 +282,17 @@ const HomePage: React.FC = () => {
             <PostActions>
               <div style={{ display: "flex" }}>
                 <PostAction active={post.liked}>
-                  <ThumbsUp size={16} style={{ marginRight: 6 }} /> Like
+                  <ThumbsUp size={16} style={{ marginRight: 2 }} />
                   <ActionCount>{post.likes}</ActionCount>
                 </PostAction>
                 <PostAction>
-                  <MessageCircle size={16} style={{ marginRight: 6 }} /> Comment
+                  <MessageCircle size={16} style={{ marginRight: 2 }} />
                   <ActionCount>{post.comments}</ActionCount>
                 </PostAction>
               </div>
               <div>
                 <PostAction>
-                  <Share2 size={16} style={{ marginRight: 6 }} /> Share
+                  <Share2 size={16} style={{ marginRight: 2 }} />
                   <ActionCount>{post.shares}</ActionCount>
                 </PostAction>
               </div>

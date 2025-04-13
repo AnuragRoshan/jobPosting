@@ -40,11 +40,11 @@ const pulse = keyframes`
 
 // Styled components
 const PageContainer = styled.div`
-  padding: 64px 32px 32px 300px;
+  padding: 40px; /* Navbar height */
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  max-width: 1400px;
+  width: 100%;
   margin: 0 auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -57,6 +57,8 @@ const HeaderSection = styled.div`
   display: flex;
   align-items: center;
   gap: 2rem;
+  /* min-height: 100vh;
+  max-height: max-content; */
   animation: ${fadeIn} 0.5s ease-out forwards;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
@@ -678,6 +680,7 @@ const CompanyDetailsPage = () => {
                 )}
                 <ProductContent>
                   <ProductName variant="h4">{product.name}</ProductName>
+                  <br />
                   <ProductDescription variant="body2">
                     {product.description}
                   </ProductDescription>

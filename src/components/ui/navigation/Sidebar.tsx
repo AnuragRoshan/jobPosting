@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { profilesData } from "../../../data/mockData";
 
 const SidebarRoot = styled.aside<{ open: boolean }>`
   position: fixed;
@@ -52,12 +53,34 @@ interface SidebarProps {
   className?: string;
 }
 
+const ProfileAvatar = styled.img`
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 4px solid ${({ theme }) => theme.colors.background.paper};
+  margin: 0 auto ${({ theme }) => theme.spacing[4]};
+  display: block;
+`;
+
+const profile = profilesData.find((p) => p.id === "1");
 export const Sidebar: React.FC<SidebarProps> = ({
   open,
   children,
   className,
 }) => (
   <SidebarRoot open={open} className={className}>
-    <SidebarContent>{children}</SidebarContent>
+    <SidebarContent>
+      {children}{" "}
+      <div
+        style={{
+          position: "absolute",
+          bottom: "0",
+          left: "0",
+          padding: "0 16px",
+        }}
+      >
+        <ProfileAvatar src={profile?.avatar} alt={profile?.name} />
+      </div>
+    </SidebarContent>
   </SidebarRoot>
 );

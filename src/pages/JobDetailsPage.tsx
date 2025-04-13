@@ -13,7 +13,7 @@ const JobDetailContainer = styled.div`
   /* flex-direction: column; */
   /* width: 100vw; */
 
-  padding-left: 300px;
+  /* padding-left: 300px; */
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
   }

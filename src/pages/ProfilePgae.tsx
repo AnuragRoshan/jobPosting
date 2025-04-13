@@ -23,8 +23,7 @@ import { CircleFadingPlus } from "lucide-react";
 const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  padding-left: 260px;
+  width: 100%;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
@@ -44,7 +43,7 @@ const COnnectContainer = styled.div`
   cursor: pointer;
   margin-bottom: ${({ theme }) => theme.spacing[4]};
   box-shadow: 0 1px 3px #73ff7144;
-  width: max-content;
+  /* width: max-content; */
   &:hover {
     background-color: ${({ theme }) => theme.colors.primary.light};
     box-shadow: 0 1px 3px ${({ theme }) => theme.colors.primary.main};

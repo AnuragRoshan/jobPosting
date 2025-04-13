@@ -23,6 +23,8 @@ import NotFoundPage from "./pages/NotFoundPage";
 import { Sidebar } from "./components/ui/navigation/Sidebar";
 // import CompanyProfilePage from "./pages/CompanyPorfilePage";
 import CompanyDetailsPage from "./pages/CompanyPorfilePage";
+import ConnectionPage from "./pages/ConnectionPage";
+import ChatPage from "./pages/ChatPage";
 
 // Styled NavLink for Sidebar
 
@@ -122,7 +124,8 @@ const AppContent: React.FC<AppContentProps> = ({
       style={{
         display: "flex",
         flexDirection: "row",
-        gap: "1rem",
+        // gap: "1rem",
+        width: "100vw",
       }}
     >
       <div>
@@ -142,13 +145,19 @@ const AppContent: React.FC<AppContentProps> = ({
               <StyledNavLink to="/">Home</StyledNavLink>
               <StyledNavLink to="/jobs">Jobs</StyledNavLink>
               <StyledNavLink to={`/profile/${user.id}`}>Profile</StyledNavLink>
-              <StyledNavLink to={`/khkh`}>Connections</StyledNavLink>
+              <StyledNavLink to={`/connections`}>My Connections</StyledNavLink>
+              <StyledNavLink to={`/chat`}>Chat</StyledNavLink>
               {/* <NavLink to=  "/company">Company Profile</NavLink> */}
             </Sidebar>
           </>
         )}
       </div>
-      <div>
+      <div
+        style={{
+          marginLeft: user ? "260px" : "0",
+          width: user ? "calc(100% - 260px)" : "100%",
+        }}
+      >
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -185,6 +194,22 @@ const AppContent: React.FC<AppContentProps> = ({
             element={
               <ProtectedRoute>
                 <JobDetailsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/connections"
+            element={
+              <ProtectedRoute>
+                <ConnectionPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/chat"
+            element={
+              <ProtectedRoute>
+                <ChatPage />
               </ProtectedRoute>
             }
           />

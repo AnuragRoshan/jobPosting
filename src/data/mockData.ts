@@ -68,7 +68,7 @@ export const profilesData: Profile[] = [
     name: "John Doe",
     avatar: "https://randomuser.me/api/portraits/men/32.jpg",
     title: "Senior Software Engineer",
-    company: "TechCorp Inc.",
+    company: "TechCorp Inc",
     location: "San Francisco, CA",
     bio: "Passionate software engineer with over 8 years of experience in building scalable web applications. Specialized in React, Node.js and cloud infrastructure.",
     skills: ["React", "TypeScript", "Node.js", "AWS", "Docker", "GraphQL"],
@@ -76,7 +76,7 @@ export const profilesData: Profile[] = [
       {
         id: "exp1",
         title: "Senior Software Engineer",
-        company: "TechCorp Inc.",
+        company: "TechCorp Inc",
         location: "San Francisco, CA",
         startDate: "2020-03",
         endDate: null,
@@ -115,7 +115,7 @@ export const profilesData: Profile[] = [
           "Graduated with honors. Participated in ACM programming competitions.",
       },
     ],
-    connections: ["2", "3", "4", "5", "6", "7", "8", "9", "10"],
+    connections: ["4", "5", "6", "7", "8", "9", "10"],
   },
   {
     id: "2",
@@ -284,7 +284,7 @@ export const profilesData: Profile[] = [
     name: "Sarah Johnson",
     avatar: "https://randomuser.me/api/portraits/women/68.jpg",
     title: "CTO & Co-founder",
-    company: "TechCorp Inc.",
+    company: "TechCorp Inc",
     location: "San Francisco, CA",
     bio: "Experienced technology leader with a passion for innovation and building high-performing teams. Over 15 years of experience in software development and architecture.",
     skills: ["Leadership", "Cloud Computing", "Software Architecture", "Agile"],
@@ -292,7 +292,7 @@ export const profilesData: Profile[] = [
       {
         id: "exp1",
         title: "CTO & Co-founder",
-        company: "TechCorp Inc.",
+        company: "TechCorp Inc",
         location: "San Francisco, CA",
         startDate: "2015-01",
         endDate: null,
@@ -439,7 +439,7 @@ export const profilesData: Profile[] = [
     name: "Liam Davis",
     avatar: "https://randomuser.me/api/portraits/men/70.jpg",
     title: "Backend Developer",
-    company: "TechCorp Inc.",
+    company: "TechCorp Inc",
     location: "San Francisco, CA",
     bio: "Backend developer with expertise in building scalable APIs and microservices. Experienced in database optimization and cloud solutions.",
     skills: ["Node.js", "Express", "MongoDB", "PostgreSQL", "AWS"],
@@ -447,7 +447,7 @@ export const profilesData: Profile[] = [
       {
         id: "exp1",
         title: "Backend Developer",
-        company: "TechCorp Inc.",
+        company: "TechCorp Inc",
         location: "San Francisco, CA",
         startDate: "2022-05",
         endDate: null,
@@ -474,7 +474,7 @@ export const jobsData: Job[] = [
   {
     id: "job1",
     title: "Senior React Developer",
-    company: "TechCorp Inc.",
+    company: "TechCorp Inc",
     companyLogo:
       "https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?semt=ais_hybrid&w=740",
     location: "San Francisco, CA (Remote)",
@@ -585,6 +585,23 @@ export const jobsData: Job[] = [
 
 export const postsData: Post[] = [
   {
+    id: "post3",
+    content:
+      "I'm speaking at the UX Design Conference next month on \"Designing for Accessibility\". If you're attending, let's connect! #uxdesign #accessibility #conference",
+    images: [
+      "https://images.unsplash.com/photo-1742564386354-adb1a9dd4654?q=80&w=2920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    ],
+    author: "Michael Johnson",
+    authorAvatar: "https://randomuser.me/api/portraits/men/45.jpg",
+    authorTitle: "UX Designer at DesignLab",
+    createdAt: "2025-04-08T16:45:00Z",
+    likes: 112,
+    comments: 19,
+    shares: 22,
+    authorId: "3",
+    liked: false,
+  },
+  {
     id: "post1",
     content:
       "Excited to announce that we are hiring React developers at TechCorp! Check out the job posting on our profile. #hiring #reactjs #developers",
@@ -594,25 +611,7 @@ export const postsData: Post[] = [
     ],
     author: "John Doe",
     authorAvatar: "https://randomuser.me/api/portraits/men/32.jpg",
-    authorTitle: "Senior Software Engineer at TechCorp Inc.",
-    createdAt: "2025-04-10T14:30:00Z",
-    likes: 154,
-    comments: 32,
-    shares: 18,
-    liked: false,
-  },
-  {
-    id: "post9",
-    content:
-      "Excited to announce that we are hiring React developers at TechCorp! Check out the job posting on our profile. #hiring #reactjs #developers",
-    images: [
-      "https://images.unsplash.com/photo-1741851374674-e4b7e573a9e7?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8",
-      "https://images.unsplash.com/photo-1741866987680-5e3d7f052b87?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8",
-    ],
-    author: "John Doe",
-    authorId: "1",
-    authorAvatar: "https://randomuser.me/api/portraits/men/32.jpg",
-    authorTitle: "Senior Software Engineer at TechCorp Inc.",
+    authorTitle: "Senior Software Engineer at TechCorp Inc",
     createdAt: "2025-04-10T14:30:00Z",
     likes: 154,
     comments: 32,
@@ -638,23 +637,6 @@ export const postsData: Post[] = [
     liked: true,
   },
   {
-    id: "post3",
-    content:
-      "I'm speaking at the UX Design Conference next month on \"Designing for Accessibility\". If you're attending, let's connect! #uxdesign #accessibility #conference",
-    images: [
-      "https://images.unsplash.com/photo-1742564386354-adb1a9dd4654?q=80&w=2920&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    ],
-    author: "Michael Johnson",
-    authorAvatar: "https://randomuser.me/api/portraits/men/45.jpg",
-    authorTitle: "UX Designer at DesignLab",
-    createdAt: "2025-04-08T16:45:00Z",
-    likes: 112,
-    comments: 19,
-    shares: 22,
-    authorId: "3",
-    liked: false,
-  },
-  {
     id: "post4",
     content:
       "Our team just released a new machine learning model that predicts customer churn with 92% accuracy. Proud of what we've accomplished! #machinelearning #datascience #ai",
@@ -671,6 +653,24 @@ export const postsData: Post[] = [
     shares: 35,
     liked: true,
     authorId: "4",
+  },
+  {
+    id: "post9",
+    content:
+      "Excited to announce that we are hiring React developers at TechCorp! Check out the job posting on our profile. #hiring #reactjs #developers",
+    images: [
+      "https://images.unsplash.com/photo-1741851374674-e4b7e573a9e7?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw0fHx8ZW58MHx8fHx8",
+      "https://images.unsplash.com/photo-1741866987680-5e3d7f052b87?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHw3fHx8ZW58MHx8fHx8",
+    ],
+    author: "John Doe",
+    authorId: "1",
+    authorAvatar: "https://randomuser.me/api/portraits/men/32.jpg",
+    authorTitle: "Senior Software Engineer at TechCorp Inc",
+    createdAt: "2025-04-10T14:30:00Z",
+    likes: 154,
+    comments: 32,
+    shares: 18,
+    liked: false,
   },
   {
     id: "post5",
@@ -734,13 +734,13 @@ export interface Company {
 export const companiesData: Company[] = [
   {
     id: "techcorp",
-    name: "TechCorp Inc.",
+    name: "TechCorp Inc",
     logo: "https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg",
     location: "San Francisco, CA",
     founded: 2015,
     website: "https://techcorp.com",
     description:
-      "TechCorp Inc. is a leading software company building modern web applications and cloud infrastructure for enterprise clients. Our team of passionate engineers and designers work together to create innovative solutions that transform businesses and enhance user experiences.",
+      "TechCorp Inc is a leading software company building modern web applications and cloud infrastructure for enterprise clients. Our team of passionate engineers and designers work together to create innovative solutions that transform businesses and enhance user experiences.",
     industry: "Software Development",
     size: "50-200 employees",
     revenue: "$10-50 million",
