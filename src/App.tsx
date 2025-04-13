@@ -11,6 +11,7 @@ import {
 import { theme } from "./styles/theme";
 import { GlobalStyles } from "./styles/globalStyles";
 import { AuthProvider, useAuth } from "./context/AuthContext";
+import { Home, Briefcase, User, Users, MessageCircle } from "lucide-react";
 
 // Import pages (to be created)
 import HomePage from "./pages/HomePage";
@@ -70,6 +71,16 @@ const StyledNavLink = styled(NavLink)`
     box-shadow: none;
     box-shadow: 0 5px 0 rgb(187, 0, 255);
     border: 1px solid transparent;
+  }
+`;
+
+const MainAppContent = styled.div<{ hasSidebar: boolean }>`
+  margin-left: ${({ hasSidebar }) => (hasSidebar ? "260px" : "0")};
+  width: ${({ hasSidebar }) => (hasSidebar ? "calc(100% - 260px)" : "100%")};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    margin-left: 0;
+    width: 100%;
   }
 `;
 
@@ -149,15 +160,27 @@ const AppContent: React.FC<AppContentProps> = ({
               <StyledNavLink to={`/chat`}>Chat</StyledNavLink>
               {/* <NavLink to=  "/company">Company Profile</NavLink> */}
             </Sidebar>
+            <BottomNavBar>
+              <NavIcon to="/" title="Home">
+                <Home size={30} />
+              </NavIcon>
+              <NavIcon to="/jobs" title="Jobs">
+                <Briefcase size={30} />
+              </NavIcon>
+              <NavIcon to={`/profile/${user?.id}`} title="Profile">
+                <User size={30} />
+              </NavIcon>
+              <NavIcon to="/connections" title="Connections">
+                <Users size={30} />
+              </NavIcon>
+              <NavIcon to="/chat" title="Chat">
+                <MessageCircle size={30} />
+              </NavIcon>
+            </BottomNavBar>
           </>
         )}
       </div>
-      <div
-        style={{
-          marginLeft: user ? "260px" : "0",
-          width: user ? "calc(100% - 260px)" : "100%",
-        }}
-      >
+      <MainAppContent hasSidebar={!!user}>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
@@ -215,9 +238,46 @@ const AppContent: React.FC<AppContentProps> = ({
           />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-      </div>
+      </MainAppContent>
     </div>
   );
 };
+
+const BottomNavBar = styled.nav`
+  display: none;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: ${({ theme }) => theme.colors.background.paper};
+    border-top: 1px solid ${({ theme }) => theme.colors.divider};
+    justify-content: space-around;
+    padding: ${({ theme }) => theme.spacing[2]} 0;
+    z-index: 1000;
+    padding: 1rem;
+  }
+`;
+
+const NavIcon = styled(NavLink)`
+  color: ${({ theme }) => theme.colors.text.secondary};
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 2.75rem;
+  height: 100%;
+  flex: 1;
+  &.active {
+    color: ${({ theme }) => theme.colors.primary.main};
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.colors.primary.main};
+  }
+`;
 
 export default App;

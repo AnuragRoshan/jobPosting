@@ -574,8 +574,8 @@ export const theme = {
   breakpoints: {
     xs: "0px",
     sm: "640px",
-    md: "768px",
-    lg: "1024px",
+    md: "770px",
+    lg: "1136px",
     xl: "1280px",
   },
   borderRadius: {

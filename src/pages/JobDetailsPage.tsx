@@ -3,20 +3,33 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
 import { jobsData, profilesData } from "../data/mockData";
 import { JobLogo, JobMeta, JobMetaItem, JobTypeTag } from "./JobsPage";
-// import { Button } from "./LoginPage";
 import { Card } from "./HomePage";
 
 const JobDetailContainer = styled.div`
-  padding: 64px; /* Navbar height */
+  padding: 64px 32px;
   display: flex;
   flex-direction: column;
-  /* flex-direction: column; */
-  /* width: 100vw; */
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
 
-  /* padding-left: 300px; */
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: 48px 16px;
+  }
+`;
+
+const JobDetailLayout = styled.div`
+  display: flex;
+  gap: 20px;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     flex-direction: column;
   }
+`;
+
+const Column = styled.div`
+  flex: 1;
+  width: 100%;
 `;
 
 const ApplyButtonContainer = styled.div`
@@ -40,6 +53,10 @@ const ApplyButtonContainer = styled.div`
     text-decoration: none;
     box-shadow: 0 5px 0 rgb(187, 0, 255);
     cursor: pointer;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    width: 100%;
   }
 `;
 
@@ -108,24 +125,6 @@ const JobRequirementItem = styled.li`
   font-size: ${({ theme }) => theme.typography.body1.fontSize};
   color: ${({ theme }) => theme.colors.text.primary};
 `;
-
-// const ApplyButton = styled.button`
-//   width: 100%;
-//   padding: ${({ theme }) => `${theme.spacing[3]} ${theme.spacing[4]}`};
-//   background-color: ${({ theme }) => theme.colors.primary.main};
-//   color: #fff;
-//   border: none;
-//   border-radius: ${({ theme }) => theme.borderRadius.md};
-//   font-size: ${({ theme }) => theme.typography.button.fontSize};
-//   font-weight: ${({ theme }) => theme.typography.button.fontWeight};
-//   text-transform: uppercase;
-//   cursor: pointer;
-//   margin-top: ${({ theme }) => theme.spacing[4]};
-
-//   &:hover {
-//     background-color: ${({ theme }) => theme.colors.primary.dark};
-//   }
-// `;
 
 const JobPostedByCard = styled(Card)`
   padding: ${({ theme }) => theme.spacing[4]};
@@ -207,13 +206,8 @@ const JobDetailsPage: React.FC = () => {
       <div>
         <BackButton onClick={() => navigate(-1)}>← Back to Jobs</BackButton>
       </div>
-      <div
-        style={{
-          display: "flex",
-          gap: "20px",
-        }}
-      >
-        <div style={{ flex: "1" }}>
+      <JobDetailLayout>
+        <Column>
           <JobDetailCard>
             <JobDetailHeader>
               <JobLogo
@@ -256,9 +250,8 @@ const JobDetailsPage: React.FC = () => {
               Apply Now
             </ApplyButtonContainer>
           </JobDetailCard>
-        </div>
-
-        <div style={{ flex: "1" }}>
+        </Column>
+        <Column>
           <JobPostedByCard>
             <JobSectionTitle>Posted by</JobSectionTitle>
             <RecruiterInfo>
@@ -308,8 +301,8 @@ const JobDetailsPage: React.FC = () => {
             </JobDetailsMeta>
             <ApplyButtonContainer>Apply Now</ApplyButtonContainer>
           </JobPostedByCard>
-        </div>
-      </div>
+        </Column>
+      </JobDetailLayout>
     </JobDetailContainer>
   );
 };

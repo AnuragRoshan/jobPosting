@@ -147,8 +147,14 @@ const ConnectionGrid = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing[6]};
-  width: 45rem;
+  width: 100%;
+  max-width: 720px;
   margin: 10px auto;
+  padding: 0 ${({ theme }) => theme.spacing[2]};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    max-width: 100%;
+  }
 `;
 
 // Update the ConnectionCard to be horizontal instead of vertical
@@ -161,22 +167,16 @@ const ConnectionCard = styled.div`
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   height: max-content;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    flex-direction: column;
+    align-items: center;
+    padding: ${({ theme }) => theme.spacing[4]};
+  }
+
   &:hover {
     box-shadow: 10px 10px 0px ${({ theme }) => theme.colors.secondary.main};
     transform: translateY(-5px);
-    transition: box-shadow 500ms
-        ${({ theme }) => theme.transitions.easing.easeInOut},
-      transform 500ms ${({ theme }) => theme.transitions.easing.easeInOut};
-
-    background-color: ${({ theme }) => theme.colors.background.paper};
-  }
-
-  &:not(:hover) {
-    /* box-shadow: 5px 5px 0px ${({ theme }) => theme.colors.primary.dark}; */
-    transform: translateY(0);
-    transition: box-shadow 200ms
-        ${({ theme }) => theme.transitions.easing.easeInOut},
-      transform 400ms ${({ theme }) => theme.transitions.easing.easeInOut};
   }
 `;
 
@@ -197,6 +197,8 @@ const ConnectionCardHeader = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100px;
     min-width: 100px;
+    padding: 10px;
+    border-radius: 50%;
   }
 `;
 
@@ -219,19 +221,29 @@ const ConnectionCardBody = styled.div`
   padding: ${({ theme }) => theme.spacing[4]};
   flex: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    align-items: center;
+    padding: ${({ theme }) => theme.spacing[3]};
+    flex-direction: column;
+  }
 `;
 
 // Update the ConnectionActions for horizontal layout
 const ConnectionActions = styled.div`
   display: flex;
+  flex: 1;
+  flex-direction: column;
   gap: ${({ theme }) => theme.spacing[2]};
   margin-top: auto;
   justify-content: flex-end;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 `;
 
@@ -240,7 +252,7 @@ const MutualConnections = styled.div`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing[2]};
-  margin-block: ${({ theme }) => theme.spacing[4]};
+  margin-top: ${({ theme }) => theme.spacing[1]};
   font-size: ${({ theme }) => theme.typography.caption.fontSize};
   color: ${({ theme }) => theme.colors.text.secondary};
 `;
@@ -310,6 +322,9 @@ const ConnectionName = styled.h3`
   font-weight: ${({ theme }) => theme.typography.h5.fontWeight};
   color: ${({ theme }) => theme.colors.text.primary};
   margin: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    text-align: center;
+  }
 `;
 
 const ConnectionTitle = styled.p`
@@ -429,11 +444,11 @@ const ConnectionPage: React.FC = () => {
     setConnections(filteredConnections);
   }, [activeTab, searchQuery, filters, myProfile]);
 
-  const handleAddFilter = (skill: string) => {
-    if (!filters.includes(skill)) {
-      setFilters([...filters, skill]);
-    }
-  };
+  // const handleAddFilter = (skill: string) => {
+  //   if (!filters.includes(skill)) {
+  //     setFilters([...filters, skill]);
+  //   }
+  // };
 
   const handleRemoveFilter = (skill: string) => {
     setFilters(filters.filter((f) => f !== skill));
@@ -542,7 +557,11 @@ const ConnectionPage: React.FC = () => {
                   <ConnectionAvatar src={profile.avatar} alt={profile.name} />
                 </ConnectionCardHeader>
                 <ConnectionCardBody>
-                  <div>
+                  <div
+                    style={{
+                      flex: 3,
+                    }}
+                  >
                     <ConnectionName>{profile.name}</ConnectionName>
                     <ConnectionTitle>{profile.title}</ConnectionTitle>
                     <ConnectionCompany>{profile.company}</ConnectionCompany>
@@ -580,28 +599,6 @@ const ConnectionPage: React.FC = () => {
                       </MutualConnections>
                     )}
                   </div>
-
-                  <div style={{ display: "flex" }}>
-                    {profile.skills.slice(0, 3).map((skill) => (
-                      <FilterTag
-                        key={skill}
-                        style={{
-                          margin: "0 4px 8px 0",
-                          cursor: "pointer",
-                          background: filters.includes(skill)
-                            ? theme.colors.primary.dark
-                            : "transparent",
-                          color: filters.includes(skill)
-                            ? theme.colors.primary.contrastText
-                            : theme.colors.text.primary,
-                        }}
-                        onClick={() => handleAddFilter(skill)}
-                      >
-                        {skill}
-                      </FilterTag>
-                    ))}
-                  </div>
-
                   <ConnectionActions>
                     <ConnectionButton
                       onClick={() => navigate(`/profile/${profile.id}`)}
@@ -621,6 +618,26 @@ const ConnectionPage: React.FC = () => {
                       </ConnectButton>
                     )}
                   </ConnectionActions>
+                  {/* <div style={{ display: "flex" }}>
+                    {profile.skills.slice(0, 3).map((skill) => (
+                      <FilterTag
+                        key={skill}
+                        style={{
+                          margin: "0 4px 8px 0",
+                          cursor: "pointer",
+                          background: filters.includes(skill)
+                            ? theme.colors.primary.dark
+                            : "transparent",
+                          color: filters.includes(skill)
+                            ? theme.colors.primary.contrastText
+                            : theme.colors.text.primary,
+                        }}
+                        onClick={() => handleAddFilter(skill)}
+                      >
+                        {skill}
+                      </FilterTag>
+                    ))}
+                  </div> */}
                 </ConnectionCardBody>
               </ConnectionCard>
             );

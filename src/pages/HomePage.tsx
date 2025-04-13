@@ -58,6 +58,9 @@ export const Card = styled.div`
 export const PostCard = styled(Card)`
   padding: ${({ theme }) => theme.spacing[4]};
   width: 50vw;
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    width: 100%;
+  }
 `;
 
 export const PostHeader = styled.div`
