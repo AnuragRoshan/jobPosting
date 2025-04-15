@@ -89,6 +89,7 @@ const MainAppContent = styled.div<{ hasSidebar: boolean }>`
     margin-left: 0;
     width: 100%;
   }
+  margin-bottom: 4rem;
 `;
 
 // Protected route wrapper component
