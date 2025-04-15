@@ -68,7 +68,7 @@ const ProfileHeader = styled.div`
 const ProfileContent = styled.div`
   max-width: 1200px;
   margin: 0 auto;
-  padding: ${({ theme }) => theme.spacing[4]};
+  padding: 0 20px;
 `;
 
 const ProfileMain = styled.div`

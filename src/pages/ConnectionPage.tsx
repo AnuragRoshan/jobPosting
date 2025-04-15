@@ -104,8 +104,10 @@ const SearchInput = styled.input`
 
 const TabsContainer = styled.div`
   display: flex;
-  /* border-bottom: 1px solid ${({ theme }) => theme.colors.divider}; */
-  margin-bottom: ${({ theme }) => theme.spacing[4]};
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #3f3f46;
+  overflow-x: auto;
+  scrollbar-width: none;
 `;
 
 interface TabProps {

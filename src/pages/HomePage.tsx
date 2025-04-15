@@ -13,7 +13,7 @@ export const HomeContainer = styled.div`
   width: 100%;
   overflow-x: hidden;
   box-sizing: border-box;
-  padding: 0 32px;
+  padding: 0 20px;
   gap: 32px;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {

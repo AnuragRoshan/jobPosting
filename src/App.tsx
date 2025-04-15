@@ -11,9 +11,15 @@ import {
 import { theme } from "./styles/theme";
 import { GlobalStyles } from "./styles/globalStyles";
 import { AuthProvider, useAuth } from "./context/AuthContext";
-import { Home, Briefcase, User, Users, MessageCircle } from "lucide-react";
+import {
+  Home,
+  Briefcase,
+  User,
+  Users,
+  // MessageCircle,
+  Bell,
+} from "lucide-react";
 
-// Import pages (to be created)
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePgae";
 import JobsPage from "./pages/JobsPage";
@@ -26,8 +32,9 @@ import { Sidebar } from "./components/ui/navigation/Sidebar";
 import CompanyDetailsPage from "./pages/CompanyPorfilePage";
 import ConnectionPage from "./pages/ConnectionPage";
 import ChatPage from "./pages/ChatPage";
-
-// Styled NavLink for Sidebar
+import MyCompanyPage from "./pages/MyCompany";
+import NotificationsPage from "./pages/Notifications";
+import SettingsPage from "./pages/SettingsPage";
 
 // const NavLinkContainer = styled(NavLink)`
 //   text-decoration: none;
@@ -158,6 +165,12 @@ const AppContent: React.FC<AppContentProps> = ({
               <StyledNavLink to={`/profile/${user.id}`}>Profile</StyledNavLink>
               <StyledNavLink to={`/connections`}>My Connections</StyledNavLink>
               <StyledNavLink to={`/chat`}>Chat</StyledNavLink>
+              <StyledNavLink to={`/myCompany`}>My Company</StyledNavLink>
+              <StyledNavLink to={`/notification`}>Notifications</StyledNavLink>
+              <StyledNavLink to={`/settings`}>Settings</StyledNavLink>
+              {/* <StyledNavLink to={`/company`}>Company Profile</StyledNavLink> */}
+              {/* <StyledNavLink to={`/companies/${user.companyId}`}>
+                Company Profile
               {/* <NavLink to=  "/company">Company Profile</NavLink> */}
             </Sidebar>
             <BottomNavBar>
@@ -167,14 +180,14 @@ const AppContent: React.FC<AppContentProps> = ({
               <NavIcon to="/jobs" title="Jobs">
                 <Briefcase size={30} />
               </NavIcon>
-              <NavIcon to={`/profile/${user?.id}`} title="Profile">
-                <User size={30} />
-              </NavIcon>
               <NavIcon to="/connections" title="Connections">
                 <Users size={30} />
               </NavIcon>
-              <NavIcon to="/chat" title="Chat">
-                <MessageCircle size={30} />
+              <NavIcon to="/notification" title="Notifications">
+                <Bell size={30} />
+              </NavIcon>
+              <NavIcon to="/settings" title="Settings">
+                <User size={30} />
               </NavIcon>
             </BottomNavBar>
           </>
@@ -197,6 +210,14 @@ const AppContent: React.FC<AppContentProps> = ({
             element={
               <ProtectedRoute>
                 <ProfilePage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/myCompany"
+            element={
+              <ProtectedRoute>
+                <MyCompanyPage />
               </ProtectedRoute>
             }
           />
@@ -233,6 +254,22 @@ const AppContent: React.FC<AppContentProps> = ({
             element={
               <ProtectedRoute>
                 <ChatPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/notification"
+            element={
+              <ProtectedRoute>
+                <NotificationsPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <SettingsPage />
               </ProtectedRoute>
             }
           />

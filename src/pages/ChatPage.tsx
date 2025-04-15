@@ -789,7 +789,7 @@ const ChatPage: React.FC = () => {
     <ChatContainer>
       <ChatSidebar>
         <ChatSidebarHeader>
-          <ChatSidebarTitle>Messages</ChatSidebarTitle>
+          <ChatSidebarTitle>Chats</ChatSidebarTitle>
           <MoreVertical size={20} />
         </ChatSidebarHeader>
 
