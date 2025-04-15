@@ -1542,7 +1542,7 @@ const MyCompanyPage: React.FC = () => {
                       `${name}: ${(percent * 100).toFixed(0)}%`
                     }
                   >
-                    {jobTypeData.map((entry, index) => (
+                    {jobTypeData.map((_, index) => (
                       <Cell
                         key={`cell-${index}`}
                         fill={COLORS[index % COLORS.length]}
