@@ -58,6 +58,8 @@ export const Card = styled.div`
 export const PostCard = styled(Card)`
   padding: ${({ theme }) => theme.spacing[4]};
   width: 50vw;
+
+  background-color: ${({ theme }) => theme.colors.background.light};
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     width: 100%;
   }
@@ -95,7 +97,7 @@ export const PostAuthorTitle = styled.p`
 
 export const PostTime = styled.span`
   font-size: ${({ theme }) => theme.typography.caption.fontSize};
-  color: ${({ theme }) => theme.colors.text.disabled};
+  color: white;
 `;
 
 export const PostContent = styled.p`

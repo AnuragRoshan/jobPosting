@@ -210,6 +210,8 @@ const Button = styled.div`
   background-color: ${({ theme }) => theme.colors.primary.main};
   color: ${({ theme }) => theme.colors.primary.contrastText};
   border: none;
+  width: max-content;
+  margin-block: 0.5rem;
   border-radius: ${({ theme }) => theme.borderRadius.md};
   font-size: ${({ theme }) => theme.typography.button.fontSize};
   font-weight: ${({ theme }) => theme.typography.button.fontWeight};
@@ -228,7 +230,8 @@ const Button = styled.div`
 
 const DangerButton = styled(Button)`
   background-color: ${({ theme }) => theme.colors.error.main};
-
+  width: max-content;
+  margin-block: 1rem;
   &:hover {
     background-color: ${({ theme }) => theme.colors.error.dark};
   }

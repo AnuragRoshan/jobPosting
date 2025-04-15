@@ -18,7 +18,12 @@ import {
   PostImages,
   PostTime,
 } from "./HomePage";
-import { CircleFadingPlus } from "lucide-react";
+import {
+  CircleFadingPlus,
+  MessageCircle,
+  Share2,
+  ThumbsUp,
+} from "lucide-react";
 
 const ProfileContainer = styled.div`
   display: flex;
@@ -129,7 +134,7 @@ const ProfileSectionTitle = styled.h2`
   font-weight: ${({ theme }) => theme.typography.h6.fontWeight};
   color: ${({ theme }) => theme.colors.primary.light};
   padding-bottom: ${({ theme }) => theme.spacing[2]};
-  border-bottom: 1px solid ${({ theme }) => theme.colors.divider};
+  /* border-bottom: 1px solid ${({ theme }) => theme.colors.divider}; */
 `;
 
 const SkillsList = styled.div`
@@ -160,6 +165,8 @@ const ExperienceItem = styled.div`
   box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
   border: 0.2px solid ${({ theme }) => theme.colors.divider};
   padding: 0.5em;
+
+  background-color: ${({ theme }) => theme.colors.background.light};
   border-radius: ${({ theme }) => theme.borderRadius.md};
 `;
 
@@ -307,15 +314,15 @@ const ProfilePage: React.FC = () => {
 
                   <PostActions>
                     <PostAction active={post.liked}>
-                      Like
+                      <ThumbsUp size={16} style={{ marginRight: 2 }} />
                       <ActionCount>{post.likes}</ActionCount>
                     </PostAction>
                     <PostAction>
-                      Comment
+                      <MessageCircle size={16} style={{ marginRight: 2 }} />
                       <ActionCount>{post.comments}</ActionCount>
                     </PostAction>
                     <PostAction>
-                      Share
+                      <Share2 size={16} style={{ marginRight: 2 }} />
                       <ActionCount>{post.shares}</ActionCount>
                     </PostAction>
                   </PostActions>

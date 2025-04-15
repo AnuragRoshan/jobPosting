@@ -34,7 +34,6 @@ import {
   Globe,
   MapPin,
   Calendar,
-  UserPlus,
   TrendingUp,
   Clock,
   CheckCircle2,
@@ -1133,8 +1132,8 @@ const MyCompanyPage: React.FC = () => {
                   <TeamMemberRole>{member.role}</TeamMemberRole>
                 </TeamMember>
               ))}
-              <TeamMember>
-                <TeamMemberAvatar
+              {/* <TeamMember> */}
+              {/* <TeamMemberAvatar
                   src="/placeholder.svg?height=80&width=80"
                   alt="Add team member"
                   style={{
@@ -1144,11 +1143,11 @@ const MyCompanyPage: React.FC = () => {
                     justifyContent: "center",
                     background: "#f4f4f5",
                   }}
-                />
-                <TeamMemberName style={{ color: "#6b7280" }}>
+                /> */}
+              {/* <TeamMemberName style={{ color: "#6b7280" }}>
                   Add Team Member
-                </TeamMemberName>
-                <TeamMemberRole>
+                </TeamMemberName> */}
+              {/* <TeamMemberRole>
                   <Button
                     variant="secondary"
                     style={{ padding: "4px 8px", fontSize: "12px" }}
@@ -1156,8 +1155,8 @@ const MyCompanyPage: React.FC = () => {
                     <UserPlus size={14} />
                     Add
                   </Button>
-                </TeamMemberRole>
-              </TeamMember>
+                </TeamMemberRole> */}
+              {/* </TeamMember> */}
             </TeamGrid>
           </TeamSection>
         </CompanyProfileCard>
